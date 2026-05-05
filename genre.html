@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Sekuya&display=swap" rel="stylesheet"> 	<title></title>
-	<link rel="stylesheet" type="text/css" href="genre_html.css?h=2cf4759d">
+	<link rel="stylesheet" type="text/css" href="genre_html.css?h=1d5674fd">
 </head>
 <body>
 <div class="textstyle1">
@@ -61,9 +61,8 @@
 	</script>
 </div></div><div id="container_d65920a"><div id="container_d65920a_padding" ><div class="textstyle1"><div id="container_75018b1a"><div id="container_75018b1a_padding" ><div class="textstyle1"><div id="container_79dff3b4"><div id="container_79dff3b4_padding" ><div class="textstyle5">  <span class="textstyle6">Retro Tunes</span>
 </div>
-</div></div><div id="elem_62a75dad"  style="vertical-align: top; position:relative; display: inline-block; width:94%; height:181px; min-width:350px; background:none; " ><form action="Genre.html" enctype="application/x-www-form-urlencoded" method="POST">  <div id="text_53cd3756">
-    <div class="textstyle5">
-<span class="textstyle7"><br/><br/></span><span class="textstyle7"><br/><br/></span><div id="container_593f5171"<!DOCTYPE html>
+</div></div></div>
+<div class="textstyle5"><div id="container_593f5171"<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -202,197 +201,10 @@ function searchSite() {
 </script>
 
 </body>
-</html>><div id="container_593f5171_padding" ></div></div><span class="textstyle7"><br/><br/></span>      </div>
-    </div>
-</form>
-<?PHP
-error_reporting(E_ALL ^ E_WARNING ^ E_ERROR); // hide errors and warnings
-function stripTagsWithContent($str, $tagbegin, $tagend)
-{    while (($pos = stripos ($str, $tagbegin)) !== false) 
-	{
-            $part = substr ($str, $pos + strlen($tagbegin));
-            $str = substr ($str, 0, $pos);
-            if (($pos2 = stripos ($part, $tagend)) !== false) 
-                $str .= substr ($part, $pos2 + strlen($tagend));
-        }
-
-        return $str;
-}
-// returns string found or false					
-function getHTMLFileTitle($filename)				
-{													
-	$filecontent = file_get_contents($filename);	
-    if ($filecontent === false)					
-        return false;								
-    												
-    $bodybegin = strpos($filecontent, '<title');	
-    if ($bodybegin === false)						
-        return false;								
-    												
-    $bodybegin = strpos($filecontent, '>', $bodybegin);
-    if ($bodybegin === false)						
-        return false;								
-    $bodybegin += 1;    							
-    $bodyend = strpos($filecontent, '</title>');	
-    if ($bodyend === false)						
-        return false;								
-													
-	$titlecontent = substr($filecontent, $bodybegin, $bodyend-$bodybegin); 
-	$titlecontent = htmlspecialchars_decode($titlecontent);			
-	return $titlecontent;		
-}			
-// returns string fragment found or false
-function searchHTMLFile($filename, $tosearch)
-{
-    $filecontent = file_get_contents($filename);
-    if ($filecontent === false)
-        return false;
-    
-    $bodybegin = strpos($filecontent, '<body');
-    if ($bodybegin === false)
-        return false;
-    
-    $bodybegin = strpos($filecontent, '>', $bodybegin);
-    if ($bodybegin === false)
-        return false;
-    $bodybegin += 1;    
-    $bodyend = strpos($filecontent, '</body>');
-    if ($bodyend === false)
-        return false;
-    
-    $bodycontent = substr($filecontent, $bodybegin, $bodyend-$bodybegin);
-        
-    $contentstripped = $bodycontent;
-    $contentstripped = stripTagsWithContent($contentstripped, '<script', '</script>');
-    $contentstripped = strip_tags($contentstripped);
-    $contentstripped = html_entity_decode($contentstripped);
-                
-    $posfound = stripos($contentstripped, $tosearch);
-    if ($posfound === false)
-        return false;
-    
-    $fragmentSizeToReturn = 200;
-    $fragmentStartPos = max(0, $posfound - ($fragmentSizeToReturn / 2));
-        
-    $ret = substr($contentstripped, $fragmentStartPos, $posfound - $fragmentStartPos) .
-            '<b>' 
-            . substr($contentstripped, $posfound, strlen($tosearch)) 
-            . '</b>' 
-            . substr($contentstripped, $posfound + strlen($tosearch), $fragmentSizeToReturn - ($posfound - $fragmentStartPos))
-            . '...';
-        
-    // in case we truncated some utf sequences with substr, fix this here:		 
-    $ret = mb_convert_encoding($ret, 'UTF-8', 'UTF-8');						 
-        
-    return $ret;															 
-}
-
-$resulttext = '';
-
-class searchEntry
-{
-    public $name;
-    public $url;
-}
-
-$allPages = array();
-$searchquery = '';
-
-if (isset($_POST['query']))
-{
-    $searchquery = $_POST['query'];
-    $resulttext = 'Results for: retro ' . htmlentities($searchquery) . '<br/><br/>';
-    
-    // build database
-
-   $x = new searchEntry();
-   $x->name = '';
-   $x->url = 'genre.html';
-   array_push($allPages, $x);
-
-   $x = new searchEntry();
-   $x->name = '';
-   $x->url = 'contact_us.html';
-   array_push($allPages, $x);
-
-   $x = new searchEntry();
-   $x->name = '';
-   $x->url = 'index.html';
-   array_push($allPages, $x);
-
-// now search database
-   
-   $resultsFound = 0;
-   
-   foreach ($allPages as $pageEntry) 
-   {      
-      $found = false;
-      $fragmentToShow = '';
-      
-      if (!(stripos(html_entity_decode($pageEntry->name), $searchquery) === false))
-      {
-         $found = true;
-         $fragmentToShow = $pageEntry->name;
-      }
-      else            
-      {
-         $fragmentToShow = searchHTMLFile($pageEntry->url, $searchquery);
-         if ($fragmentToShow !== false)
-            $found = true;         
-      }
-      
-      if ($found)
-      {
-         // add as found
-         $uptodateTitle = getHTMLFileTitle($pageEntry->url);
-         if ($uptodateTitle !== false)
-             $pageEntry->name = $uptodateTitle;
-             
-         $ptitle = $pageEntry->name == '' ? $pageEntry->url : $pageEntry->name;
-         $resulttext .= '<a style="font-size: 130%;" href="' . $pageEntry->url . '">' . $ptitle . '</a><br/>' . $fragmentToShow . '<br/><br/>';
-         $resultsFound += 1;
-      }
-   }
-   
-   if ($resultsFound == 0)
-      $resulttext = '1 results found.';
-}
-
-// display result or nothing
-
-// jsonencode doesn't like invalid unicode characters, so fix them if they are there:	
-$resulttext_prep = mb_convert_encoding($resulttext, 'UTF-8', 'UTF-8');	
-
-$lnbr = "\n";
-$jsresult = json_encode($resulttext_prep, JSON_UNESCAPED_UNICODE);
-
-echo '<script type="text/javascript">' . $lnbr;
-echo 'var rootform = document.getElementById("elem_62a75dad");' .$lnbr;
-echo 'var resultelem = rootform.querySelectorAll(\'[id^="container_"]\');';
-echo ' ' . $lnbr;
-echo 'var textelem = resultelem[1];' . $lnbr;
-echo '// search inner element to replace to keep font as specified by user' . $lnbr;
-echo 'var testelem = textelem;' . $lnbr;
-echo 'while(testelem)' . $lnbr;
-echo '{' . $lnbr;
-echo '	if (testelem && testelem.nodeType == 1) ' . $lnbr;
-echo '	{' . $lnbr;
-echo '		textelem = testelem;' . $lnbr;
-echo '		testelem = testelem.firstChild;' . $lnbr;
-echo '	}' . $lnbr;
-echo '	else		' . $lnbr;
-echo '		testelem = testelem.nextSibling;' . $lnbr;
-echo '}' . $lnbr;
-echo 'if (!(\'innerHTML\' in textelem)) textelem = resultelem[1]; // in case found something invalid' . $lnbr;
-echo 'textelem.innerHTML = ' . $jsresult . ';' . $lnbr;
-echo 'var queryform = document.getElementsByName(\'query\');' . $lnbr;
-echo 'queryform[0].value = ' . json_encode($searchquery) . ';' . $lnbr;
-echo '</script>' . $lnbr;   
-    ?>
-</div></div>
+</html>><div id="container_593f5171_padding" ></div></div></div>
 <div style="clear:both"></div></div></div></div>
-<div style="clear:both"></div></div></div><div id="container_438337b7"><div id="container_438337b7_padding" ><div class="textstyle1">  <span class="textstyle8">Retro music originated from the blues, as did most music even today. However, retro music as a whole is not limited to just a few genres from the '60s or '70s. Over the years, many genres and sub-genres have been created, giving a varied meaning to &quot;retro&quot; music. To simplify things, it generally stems from the popularization of different genres from the '70s, '80s, and early '90s.<br/><br/>For now, we will only be talking about those three eras. However, if you would like to include a different era or more information about the ones mentioned, please feel free to request them in our </span>
-  <span class="textstyle8"><a href="contact_us.html">'request form.'</a></span>
+<div style="clear:both"></div></div></div><div id="container_438337b7"><div id="container_438337b7_padding" ><div class="textstyle1">  <span class="textstyle7">Retro music originated from the blues, as did most music even today. However, retro music as a whole is not limited to just a few genres from the '60s or '70s. Over the years, many genres and sub-genres have been created, giving a varied meaning to &quot;retro&quot; music. To simplify things, it generally stems from the popularization of different genres from the '70s, '80s, and early '90s.<br/><br/>For now, we will only be talking about those three eras. However, if you would like to include a different era or more information about the ones mentioned, please feel free to request them in our </span>
+  <span class="textstyle7"><a href="contact_us.html">'request form.'</a></span>
 </div>
 </div></div><div id="container_105956d6"><div id="container_105956d6_padding" ><div class="textstyle1"><div id="container_38d296dd"><div id="container_38d296dd_padding" ><div class="textstyle1"></div>
 <div class="textstyle5"><img src="images/disco.jpg" width="1800" height="1166" id="img_7e4f3457" alt="" title="" /></div>
@@ -402,7 +214,7 @@ Disco - 1970s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>
 </button><div class="wsp_accordionContent" id="elem_3a687b5a_content" >
 <div class="wsp_accordionContentPadding" id="elem_3a687b5a_contentPadding" >
-<div id="text_27fdaa10"><div id="text_27fdaa10_padding" ><div class="textstyle1"><span class="textstyle9">Emerging from the nightlife of Philadelphia and New York City. Disco made its way into mainstream clubs, revolutionizing dance culture. Its upbeat combination of soul, funk, and Latin rhythms created a vibrant new genre and iconic dance styles that defined the decade.<br/></span><span class="textstyle10"><br/></span><span class="textstyle10"><a href="https://www.pbs.org/articles/the-dazzling-daring-history-of-disco">Learn more about the history of Disco</a></span><span class="textstyle7"><br/><br/></span><span class="textstyle11">Image credit: Saturday Night Fever (produced by Robert Stigwood)</span></div>
+<div id="text_27fdaa10"><div id="text_27fdaa10_padding" ><div class="textstyle1"><span class="textstyle8">Emerging from the nightlife of Philadelphia and New York City. Disco made its way into mainstream clubs, revolutionizing dance culture. Its upbeat combination of soul, funk, and Latin rhythms created a vibrant new genre and iconic dance styles that defined the decade.<br/></span><span class="textstyle9"><br/></span><span class="textstyle9"><a href="https://www.pbs.org/articles/the-dazzling-daring-history-of-disco">Learn more about the history of Disco</a></span><span class="textstyle10"><br/><br/></span><span class="textstyle11">Image credit: Saturday Night Fever (produced by Robert Stigwood)</span></div>
 </div></div></div></div></div><script>
 var elem_3a687b5a_button_open = function()
 {
@@ -432,7 +244,7 @@ Hip Hop - 1980s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>
 </button><div class="wsp_accordionContent" id="elem_74cc30ce_content" >
 <div class="wsp_accordionContentPadding" id="elem_74cc30ce_contentPadding" >
-<div id="text_594abb12"><div id="text_594abb12_padding" ><div class="textstyle1"><span class="textstyle9">Starting in the Bronx, New York, in the early '70s, Hip Hop exploded in popularity during the '80s. Driven by beatboxing, MCing, and innovative DJing, it moved from block parties to global clubs, introducing entirely new genres of music and dance to the world.<br/></span><span class="textstyle12"><br/><br/></span><span class="textstyle10"><a href="https://www.hiphopbrunchldn.com/post/the-history-of-hip-hop-how-it-started">Learn more about the history of Hip Hop</a></span><span class="textstyle7"><br/><br/></span>  <span class="textstyle11"> Image credit: unknown but it is believed to be Glen E. Friedman</span>
+<div id="text_594abb12"><div id="text_594abb12_padding" ><div class="textstyle1"><span class="textstyle8">Starting in the Bronx, New York, in the early '70s, Hip Hop exploded in popularity during the '80s. Driven by beatboxing, MCing, and innovative DJing, it moved from block parties to global clubs, introducing entirely new genres of music and dance to the world.<br/></span><span class="textstyle12"><br/><br/></span><span class="textstyle9"><a href="https://www.hiphopbrunchldn.com/post/the-history-of-hip-hop-how-it-started">Learn more about the history of Hip Hop</a></span><span class="textstyle10"><br/><br/></span>  <span class="textstyle11"> Image credit: unknown but it is believed to be Glen E. Friedman</span>
 </div>
 </div></div></div></div></div><script>
 var elem_74cc30ce_button_open = function()
@@ -463,7 +275,7 @@ Alternative Rock - 1990s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>
 </button><div class="wsp_accordionContent" id="elem_2999867e_content" >
 <div class="wsp_accordionContentPadding" id="elem_2999867e_contentPadding" >
-<div id="text_67883280"><div id="text_67883280_padding" ><div class="textstyle1"><span class="textstyle9">This era witnessed the rise of many iconic artists, including the legendary band Nirvana. These groups drew influence from various genres and sub-genres, breaking away from mainstream pop to create new, raw styles of music that defined a generation</span><span class="textstyle12">.<br/><br/><br/></span><span class="textstyle10"><a href="https://www.abc.net.au/listen/programs/intothemusic/nineties-rock-an-alternative-history/5888302">Learn more about the history of Alt Rock</a></span><span class="textstyle7"><br/><br/></span>  <span class="textstyle11"> Image credit: Michael Lavine, 1991: Details Magazine.</span>
+<div id="text_67883280"><div id="text_67883280_padding" ><div class="textstyle1"><span class="textstyle8">This era witnessed the rise of many iconic artists, including the legendary band Nirvana. These groups drew influence from various genres and sub-genres, breaking away from mainstream pop to create new, raw styles of music that defined a generation</span><span class="textstyle12">.<br/><br/><br/></span><span class="textstyle9"><a href="https://www.abc.net.au/listen/programs/intothemusic/nineties-rock-an-alternative-history/5888302">Learn more about the history of Alt Rock</a></span><span class="textstyle10"><br/><br/></span>  <span class="textstyle11"> Image credit: Michael Lavine, 1991: Details Magazine.</span>
 </div>
 </div></div></div></div></div><script>
 var elem_2999867e_button_open = function()

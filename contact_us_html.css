@@ -17,8 +17,6 @@ a:hover { color:#B2B3B4; }
 			#menu_1cc482e9 .mobileEntry { display: block; } 
 			#menu_1cc482e9 .normalEntry { display: none; } 
 		}
-#elem_e35a6f1 { height: auto !important; }  
-#text_283d0531 { position: relative !important; }  
 #button_e386fb8 { vertical-align: bottom; border-radius: 0px 15px 0px 15px; position:relative; display: inline-block; width:100px; height:30px; background-color:#1E5A40;  }
 #button_e386fb8:hover { background-color:#45C384;  }
 #button_e386fb8:hover { color:#FFFFFF; }
@@ -60,19 +58,17 @@ a:hover { color:#B2B3B4; }
 #container_18bafa13_padding { margin: 10px; display: block;  }
 .textstyle5 { text-align:center; }
 .textstyle6 { font-size:96pt; font-family:'Courier New', Courier, monospace; color:#FFFFFF; font-weight:bold;  }
-#text_283d0531 { position:absolute; left:0%; top:0%; width:100%; height:100%; background:none;  }
-.textstyle7 { font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }
 #container_6532fa0e { vertical-align: top; position:relative; display: inline-block; width:80%; min-height:150px; background:none;  }
 #container_6532fa0e_padding { margin: 10px; display: block;  }
 #container_3ac38fd0 { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:150px; background:none;  }
 #container_3ac38fd0_padding { margin: 10px; display: block;  }
-.textstyle8 { font-size:22pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF; font-weight:bold;  }
-.textstyle9 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
+.textstyle7 { font-size:22pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF; font-weight:bold;  }
+.textstyle8 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
 #container_4beb9065 { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:638px; background-color:#3BA075;  }
 #container_4beb9065_padding { margin: 10px; display: block;  }
 #form_232424b1 { position:absolute; left:1%; top:1%; width:44%; min-height:581px; background:none;  }
 #form_232424b1_padding { margin: 10px; display: block;  }
-.textstyle10 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF; font-weight:bold;  }
+.textstyle9 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF; font-weight:bold;  }
 #edit_409996f1 { box-sizing: border-box; vertical-align: bottom; position:relative; display: inline-block; width:150px; height:30px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }
 #edit_157c0625 { box-sizing: border-box; vertical-align: bottom; position:relative; display: inline-block; width:172px; height:30px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }
 #combo_6fc61b5 { box-sizing: border-box; vertical-align: bottom; position:relative; display: inline-block; width:133px; height:25px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:12pt; font-family:'Courier New', Courier, monospace; color:#000000;  }
