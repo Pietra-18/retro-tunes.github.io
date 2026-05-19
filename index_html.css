@@ -17,6 +17,10 @@ a:hover { color:#B2B3B4; }
 			#menu_38dcaec .mobileEntry { display: block; } 
 			#menu_38dcaec .normalEntry { display: none; } 
 		}
+#gallery_6568132a div.galleryimgcontainer { box-sizing: border-box; vertical-align: middle; display: inline-block; width: 33%; height: auto; padding: 10px; font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#FFFFFF; text-align:center;  } 
+#gallery_6568132a div.galleryimgcontainer img {  width: 100%;  height: auto;  } 
+@media only screen and (max-width:520px) { #gallery_6568132a div.galleryimgcontainer { width: 50%; } } 
+@media only screen and (max-width:420px) { #gallery_6568132a div.galleryimgcontainer { width: 100%; } } 
  .sekuya-regular {
   font-family: "Sekuya", system-ui;
   font-weight: 400;
@@ -63,6 +67,7 @@ a:hover { color:#B2B3B4; }
 #container_278a91bc_padding { margin: 10px; display: block;  }
 .textstyle8 { font-size:12pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
 .textstyle9 { font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;  }
+#gallery_6568132a { overflow:hidden; vertical-align: bottom; position:relative; display: inline-block; width:100%;  }
 #container_ade6698 { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:150px; background:none;  }
 #container_ade6698_padding { margin: 10px; display: block;  }
 .textstyle10 { font-size:11pt; font-family:Arial, Helvetica, sans-serif; color:#FFFFFF;  }
