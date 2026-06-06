@@ -22,7 +22,7 @@ a:hover { color:#B2B3B4; }
 #button_e386fb8:hover { color:#FFFFFF; }
 #gallery_27858737 div.galleryimgcontainer { box-sizing: border-box; vertical-align: middle; display: inline-block; width: 33%; height: auto; padding: 10px; font-size:12pt; font-family:'Courier New', Courier, monospace; color:#FFFFFF; text-align:center;  } 
 #gallery_27858737 div.galleryimgcontainer img {  width: 100%;  height: auto;  } 
-@media only screen and (max-width:520px) { #gallery_27858737 div.galleryimgcontainer { width: 50%; } } 
+@media only screen and (max-width:420px) { #gallery_27858737 div.galleryimgcontainer { width: 50%; } } 
 @media only screen and (max-width:420px) { #gallery_27858737 div.galleryimgcontainer { width: 100%; } } 
 #gallery_27858737 img{  border: 1px solid transparent; } 
 #gallery_27858737 img:hover{ border: 1px solid #1E5A40 !important; } 
@@ -74,4 +74,4 @@ a:hover { color:#B2B3B4; }
 #combo_6fc61b5 { box-sizing: border-box; vertical-align: bottom; position:relative; display: inline-block; width:133px; height:25px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:12pt; font-family:'Courier New', Courier, monospace; color:#000000;  }
 #edit_78d6203e { box-sizing: border-box; vertical-align: bottom; position:relative; display: inline-block; width:322px; height:121px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }
 #button_e386fb8 { vertical-align: bottom; border-radius: 0px 15px 0px 15px; position:relative; display: inline-block; width:100px; height:30px; background-color:#1E5A40; font-size:12pt; font-family:'Palatino Linotype', 'Book Antiqua3', Palatino, serif; color:#FFFFFF;  }
-#gallery_27858737 { overflow:hidden; vertical-align: top; position:relative; display: inline-block; float:right; width:51%; min-height:538px;  }
+#gallery_27858737 { overflow:hidden; vertical-align: top; position:relative; display: inline-block; float:right; width:50%; min-height:538px;  }
