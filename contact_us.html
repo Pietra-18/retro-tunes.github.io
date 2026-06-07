@@ -206,7 +206,22 @@ method="POST" id="form_232424b1"><div id="form_232424b1_padding" ><div class="te
   <span class="textstyle8"> </span>
 <input type="text" value="" title="" name="Name"  id="edit_409996f1" >
 <span class="textstyle8"><br/><br/><br/><br/><br/></span><span class="textstyle9">Email:</span>  <span class="textstyle8"> </span>
-<input type="email" value="" title="" name="Email"  id="edit_157c0625" >
+<input type="email" value="" title="" name="Email"  id="edit_157c0625"<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/xdaverng"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form> >
 <span class="textstyle8"><br/><br/><br/><br/><br/></span><span class="textstyle9">Request a:</span>  <span class="textstyle8"> </span>
 <select name="Choose" title=""  id="combo_6fc61b5" >
 <option value="Song" selected="selected">Song</option>
