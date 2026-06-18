@@ -101,6 +101,14 @@ body {
     background: #eee;
 }
 </style>
+
+	<style>
+.highlight-search {
+    background-color: yellow;
+    color: black;
+    padding: 2px;
+}
+</style>
 </head>
 
 <body>
@@ -130,16 +138,163 @@ function searchSite() {
             keywords: ["home", "main", "start", "welcome", "index"],
             link: "index.html"
         },
+		<script>
+window.addEventListener("load", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("highlight");
+
+    if (!keyword) return;
+
+    function highlightText(node) {
+
+        if (node.nodeType === 3) { // text node
+
+            const text = node.nodeValue;
+            const regex = new RegExp("(" + keyword + ")", "gi");
+
+            if (regex.test(text)) {
+
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
+                    regex,
+                    '<span class="highlight-search">$1</span>'
+                );
+
+                node.parentNode.replaceChild(span, node);
+            }
+
+        } else if (
+            node.nodeType === 1 &&
+            node.tagName !== "SCRIPT" &&
+            node.tagName !== "STYLE"
+        ) {
+
+            [...node.childNodes].forEach(highlightText);
+        }
+    }
+
+    highlightText(document.body);
+
+    const firstHighlight = document.querySelector(".highlight-search");
+
+    if (firstHighlight) {
+        firstHighlight.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+});
+</script>
         {
             name: "Contact Page",
             keywords: ["contact", "email", "phone", "help", "support"],
             link: "contact_us.html"
         },
+	<script>
+window.addEventListener("load", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("highlight");
+
+    if (!keyword) return;
+
+    function highlightText(node) {
+
+        if (node.nodeType === 3) { // text node
+
+            const text = node.nodeValue;
+            const regex = new RegExp("(" + keyword + ")", "gi");
+
+            if (regex.test(text)) {
+
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
+                    regex,
+                    '<span class="highlight-search">$1</span>'
+                );
+
+                node.parentNode.replaceChild(span, node);
+            }
+
+        } else if (
+            node.nodeType === 1 &&
+            node.tagName !== "SCRIPT" &&
+            node.tagName !== "STYLE"
+        ) {
+
+            [...node.childNodes].forEach(highlightText);
+        }
+    }
+
+    highlightText(document.body);
+
+    const firstHighlight = document.querySelector(".highlight-search");
+
+    if (firstHighlight) {
+        firstHighlight.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+});
+</script>
         {
             name: "Genre Page",
             keywords: ["music", "info", "disco", "era", "retro"],
             link: "genre.html"
         },
+	<script>
+window.addEventListener("load", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("highlight");
+
+    if (!keyword) return;
+
+    function highlightText(node) {
+
+        if (node.nodeType === 3) { // text node
+
+            const text = node.nodeValue;
+            const regex = new RegExp("(" + keyword + ")", "gi");
+
+            if (regex.test(text)) {
+
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
+                    regex,
+                    '<span class="highlight-search">$1</span>'
+                );
+
+                node.parentNode.replaceChild(span, node);
+            }
+
+        } else if (
+            node.nodeType === 1 &&
+            node.tagName !== "SCRIPT" &&
+            node.tagName !== "STYLE"
+        ) {
+
+            [...node.childNodes].forEach(highlightText);
+        }
+    }
+
+    highlightText(document.body);
+
+    const firstHighlight = document.querySelector(".highlight-search");
+
+    if (firstHighlight) {
+        firstHighlight.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+});
+</script>
 
         // &#127925; MUSIC GENRES
         { 
@@ -150,6 +305,55 @@ function searchSite() {
             ], 
             link: "genre.html#disco" 
         },
+	<script>
+window.addEventListener("load", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("highlight");
+
+    if (!keyword) return;
+
+    function highlightText(node) {
+
+        if (node.nodeType === 3) { // text node
+
+            const text = node.nodeValue;
+            const regex = new RegExp("(" + keyword + ")", "gi");
+
+            if (regex.test(text)) {
+
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
+                    regex,
+                    '<span class="highlight-search">$1</span>'
+                );
+
+                node.parentNode.replaceChild(span, node);
+            }
+
+        } else if (
+            node.nodeType === 1 &&
+            node.tagName !== "SCRIPT" &&
+            node.tagName !== "STYLE"
+        ) {
+
+            [...node.childNodes].forEach(highlightText);
+        }
+    }
+
+    highlightText(document.body);
+
+    const firstHighlight = document.querySelector(".highlight-search");
+
+    if (firstHighlight) {
+        firstHighlight.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+});
+</script>
         { 
             name: "Hip Hop", 
             keywords: [
@@ -158,6 +362,55 @@ function searchSite() {
             ], 
             link: "genre.html#hiphop" 
         },
+	<script>
+window.addEventListener("load", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("highlight");
+
+    if (!keyword) return;
+
+    function highlightText(node) {
+
+        if (node.nodeType === 3) { // text node
+
+            const text = node.nodeValue;
+            const regex = new RegExp("(" + keyword + ")", "gi");
+
+            if (regex.test(text)) {
+
+                const span = document.createElement("span");
+
+                span.innerHTML = text.replace(
+                    regex,
+                    '<span class="highlight-search">$1</span>'
+                );
+
+                node.parentNode.replaceChild(span, node);
+            }
+
+        } else if (
+            node.nodeType === 1 &&
+            node.tagName !== "SCRIPT" &&
+            node.tagName !== "STYLE"
+        ) {
+
+            [...node.childNodes].forEach(highlightText);
+        }
+    }
+
+    highlightText(document.body);
+
+    const firstHighlight = document.querySelector(".highlight-search");
+
+    if (firstHighlight) {
+        firstHighlight.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+});
+</script>
         { 
             name: "Alternative Rock", 
             keywords: [
@@ -180,9 +433,14 @@ function searchSite() {
             div.className = "result-item";
             div.textContent = item.name;
 
-            div.onclick = function() {
-                window.location.href = item.link;
-            };
+            ddiv.onclick = function() {
+    window.location.href =
+        item.link +
+        (item.link.includes("?") ? "&" : "?") +
+        "highlight=" +
+        encodeURIComponent(words[0]);
+};
+};
 
             resultsBox.appendChild(div);
         }
