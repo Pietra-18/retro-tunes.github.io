@@ -182,11 +182,11 @@ wsp_gallery.prototype.openlayer = function(imgurl, width, height, usenavbuttons,
 					color: rgb(255, 255, 255);					\
 					" + posstr  + "						\
 					position: absolute;						\
-					height: 100%;							\
+					height: 100vh;							\
 					width: 10%;								\
 					cursor: pointer;								\
 					z-index: 100;								\
-					padding-top: 20%;						\
+					padding-top: 45vh;						\
 					font-size: 10vh;";
 					
 				navl.onmouseover  = function() { this.style.color = "#555555"; };
