@@ -67,8 +67,8 @@ a:hover { color:#B2B3B4; }
 #container_79dff3b4_padding { margin: 10px; display: block;  }
 .textstyle5 { text-align:center; }
 .textstyle6 { font-size:96pt; font-family:'Courier New', Courier, monospace; color:#FFFFFF; font-weight:bold;  }
-#container_593f5171 { vertical-align: top; position:relative; display: inline-block; width:80%; min-height:150px; background:none;  }
-#container_593f5171_padding { margin: 10px; display: block;  }
+#container_6b0a0558 { vertical-align: top; position:relative; display: inline-block; width:80%; min-height:150px; background:none;  }
+#container_6b0a0558_padding { margin: 10px; display: block;  }
 #container_438337b7 { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:150px; background:none;  }
 #container_438337b7_padding { margin: 10px; display: block;  }
 .textstyle7 { font-size:18pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
@@ -78,7 +78,7 @@ a:hover { color:#B2B3B4; }
 #container_38d296dd_padding { margin: 10px; display: block;  }
 #img_7e4f3457 { vertical-align: bottom; position:relative; display: inline-block; width:91%; background:none; height:auto;  }
 #text_27fdaa10 { vertical-align: bottom; position:relative; display: inline-block; width:100%; background:none;  }
-#text_27fdaa10_padding { margin: 15px 5px 5px 15px;display: block;  }
+#text_27fdaa10_padding { margin: 15px 5px 5px 15px; display: block;  }
 .textstyle8 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
 .textstyle9 { font-size:16pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF; font-weight:bold;  }
 .textstyle10 { font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }
@@ -87,13 +87,13 @@ a:hover { color:#B2B3B4; }
 #container_5ed68884_padding { margin: 10px; display: block;  }
 #img_466424f6 { vertical-align: bottom; position:relative; display: inline-block; width:84%; background:none; height:auto;  }
 #text_594abb12 { vertical-align: bottom; position:relative; display: inline-block; width:100%; background:none;  }
-#text_594abb12_padding { margin: 15px 5px 5px 15px;display: block;  }
+#text_594abb12_padding { margin: 15px 5px 5px 15px; display: block;  }
 .textstyle12 { font-size:10pt; font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif; color:#FFFFFF;  }
 #container_768882c7 { vertical-align: top; position:relative; display: inline-block; width:33%; min-height:575px; background:none;  }
 #container_768882c7_padding { margin: 10px; display: block;  }
 #img_66981399 { vertical-align: bottom; position:relative; display: inline-block; width:84%; background:none; height:auto;  }
 #text_67883280 { vertical-align: bottom; position:relative; display: inline-block; width:100%; background:none;  }
-#text_67883280_padding { margin: 15px 5px 5px 15px;display: block;  }
+#text_67883280_padding { margin: 15px 5px 5px 15px; display: block;  }
 @media only screen and (max-width: 600px)
 {
 		#container_38d296dd { width:100%;  }

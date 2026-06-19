@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Sekuya&display=swap" rel="stylesheet"> 	<title></title>
-	<link rel="stylesheet" type="text/css" href="genre_html.css?h=9d4e5159">
+	<link rel="stylesheet" type="text/css" href="genre_html.css?h=94c9d23c">
 </head>
 <body>
 <div class="textstyle1">
@@ -56,7 +56,7 @@
 </div></div><div id="container_d65920a"><div id="container_d65920a_padding" ><div class="textstyle1"><div id="container_75018b1a"><div id="container_75018b1a_padding" ><div class="textstyle1"><div id="container_79dff3b4"><div id="container_79dff3b4_padding" ><div class="textstyle5">  <span class="textstyle6">Retro Tunes</span>
 </div>
 </div></div></div>
-<div class="textstyle5"><div id="container_593f5171"<!DOCTYPE html>
+<div class="textstyle5"><div id="container_6b0a0558"<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -100,30 +100,50 @@ body {
 .result-item:hover {
     background: #eee;
 }
+
+/* &#127775; DEFAULT HIGHLIGHT COLOR */
+mark {
+    background-color: #ffeb3b;
+    color: black;
+}
 </style>
 </head>
 
 <body>
 
-<!&#8212; SEARCH &#8212;>
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search site&#8230;" onkeyup="searchSite()">
+<input type="text" id="searchInput" placeholder="Search site..." onkeyup="searchSite()">
 <div id="results"></div>
 </div>
 
 <script>
-function searchSite() {
+// Helper function to remove previous highlights without modifying structural HTML tags
+function clearHighlights(container) {
+    const marks = container.querySelectorAll("mark");
+    marks.forEach(mark => {
+        const textNode = document.createTextNode(mark.textContent);
+        mark.replaceWith(textNode);
+    });
+    // Normalize to stitch split text nodes back together
+    container.normalize();
+}
 
+function searchSite() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let resultsBox = document.getElementById("results");
+    
+    // Target the body element to look for words to highlight
+    let contentBody = document.body;
 
     resultsBox.innerHTML = "";
+    
+    // Clear any previous highlights first
+    clearHighlights(contentBody);
 
-    if (input.length === 0) return;
+    if (input.trim().length === 0) return;
 
-    // &#128293; COMBINED DATA: pages + genres
+    // &#128293; COMBINED DATA: pages + genres (All pages restored)
     let data = [
-
         // &#127760; SITE PAGES
         {
             name: "Home Page",
@@ -168,11 +188,10 @@ function searchSite() {
         }
     ];
 
-    let words = input.split(" ");
+    let words = input.split(" ").filter(w => w.trim() !== "");
 
     data.forEach(item => {
         let fullText = item.name.toLowerCase() + " " + item.keywords.join(" ").toLowerCase();
-
         let match = words.every(word => fullText.includes(word));
 
         if (match) {
@@ -191,18 +210,51 @@ function searchSite() {
     if (resultsBox.innerHTML === "") {
         resultsBox.innerHTML = "<div class='result-item'>No results found</div>";
     }
+
+    // &#127775; HIGHLIGHT TEXT MATCHES ON THE PAGE
+    words.forEach(word => {
+        let safeWord = word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        let regex = new RegExp(`(${safeWord})`, "gi");
+
+        const walkTextNodes = (node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (regex.test(node.nodeValue)) {
+                    const originalText = node.nodeValue;
+                    const tempSpan = document.createElement("span");
+                    tempSpan.innerHTML = originalText.replace(regex, "<mark>$1</mark>");
+                    
+                    // Replace text node with elements cleanly
+                    while (tempSpan.firstChild) {
+                        node.parentNode.insertBefore(tempSpan.firstChild, node);
+                    }
+                    node.parentNode.removeChild(node);
+                }
+            } else if (
+                node.nodeType === Node.ELEMENT_NODE && 
+                node.tagName !== "SCRIPT" && 
+                node.tagName !== "STYLE" && 
+                node.tagName !== "INPUT" && 
+                node.id !== "results"
+            ) {
+                // Safely crawl child elements recursively without redefining layout blocks
+                Array.from(node.childNodes).forEach(walkTextNodes);
+            }
+        };
+
+        Array.from(contentBody.childNodes).forEach(walkTextNodes);
+    });
 }
 </script>
 
 </body>
-</html>><div id="container_593f5171_padding" ></div></div></div>
+</html>><div id="container_6b0a0558_padding" ></div></div></div>
 <div style="clear:both"></div></div></div></div>
 <div style="clear:both"></div></div></div><div id="container_438337b7"><div id="container_438337b7_padding" ><div class="textstyle1">  <span class="textstyle7">Retro music originated from the blues, as did most music even today. However, retro music as a whole is not limited to just a few genres from the '60s or '70s. Over the years, many genres and sub-genres have been created, giving a varied meaning to &quot;retro&quot; music. To simplify things, it generally stems from the popularization of different genres from the '70s, '80s, and early '90s.<br/><br/>For now, we will only be talking about those three eras. However, if you would like to include a different era or more information about the ones mentioned, please feel free to request them in our </span>
   <span class="textstyle7"><a href="contact_us.html">'request form.'</a></span>
 </div>
 </div></div><div id="container_105956d6"><div id="container_105956d6_padding" ><div class="textstyle1"><div id="container_38d296dd"><div id="container_38d296dd_padding" ><div class="textstyle1"></div>
 <div class="textstyle5"><img src="images/disco.jpg" width="1800" height="1166" id="img_7e4f3457" alt="" title="" /></div>
-<div class="textstyle1"><div class="wsp_accordion" id="elem_3a687b5a"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px;width:100%; height:182px; background:none; background:none;  height: auto;" >
+<div class="textstyle1"><div class="wsp_accordion" id="elem_3a687b5a"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px; width:100%; height:182px; background:none; background:none;  height: auto;" >
 <button class="wsp_accordionButton" id="elem_3a687b5a_button" >
 Disco - 1970s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>
@@ -232,7 +284,7 @@ elem_3a687b5a_button_open.call(elm);</script>
 </div>
 <div style="clear:both"></div></div></div><div id="container_5ed68884"><div id="container_5ed68884_padding" ><div class="textstyle1"></div>
 <div class="textstyle5"><img src="images/hip_hop.jpg" width="1920" height="1363" id="img_466424f6" alt="" title="" /></div>
-<div class="textstyle1"><div class="wsp_accordion" id="elem_74cc30ce"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px;width:100%; height:426px; background:none; background:none;  height: auto;" >
+<div class="textstyle1"><div class="wsp_accordion" id="elem_74cc30ce"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px; width:100%; height:426px; background:none; background:none;  height: auto;" >
 <button class="wsp_accordionButton" id="elem_74cc30ce_button" >
 Hip Hop - 1980s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>
@@ -263,7 +315,7 @@ elem_74cc30ce_button_open.call(elm);</script>
 </div>
 <div style="clear:both"></div></div></div><div id="container_768882c7"><div id="container_768882c7_padding" ><div class="textstyle1"></div>
 <div class="textstyle5"><img src="images/alt_rock.webp" width="1300" height="923" id="img_66981399" alt="" title="" /></div>
-<div class="textstyle1"><div class="wsp_accordion" id="elem_2999867e"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px;width:100%; height:181px; background:none; background:none;  height: auto;" >
+<div class="textstyle1"><div class="wsp_accordion" id="elem_2999867e"  style="vertical-align: top; position:relative; display: inline-block; margin:1px 0px 1px 0px; width:100%; height:181px; background:none; background:none;  height: auto;" >
 <button class="wsp_accordionButton" id="elem_2999867e_button" >
 Alternative Rock - 1990s
 <span class="wsp_accordionButtonIndicator" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size:30pt" ></span>

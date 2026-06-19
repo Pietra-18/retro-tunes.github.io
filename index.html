@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Sekuya&display=swap" rel="stylesheet"> 	<title></title>
-	<link rel="stylesheet" type="text/css" href="index_html.css?h=51223df6">
+	<link rel="stylesheet" type="text/css" href="index_html.css?h=b5fca931">
 </head>
 <body>
 <div class="textstyle1">
@@ -56,7 +56,7 @@
 </div></div><div id="container_50dff902"><div id="container_50dff902_padding" ><div class="textstyle1"><div id="container_518a40e6"><div id="container_518a40e6_padding" ><div class="textstyle1"><div id="container_588c0ec4"><div id="container_588c0ec4_padding" ><div class="textstyle5">  <span class="textstyle6">Retro Tunes</span>
 </div>
 </div></div></div>
-<div class="textstyle5"><div id="container_33dab022"<!DOCTYPE html>
+<div class="textstyle5"><div id="container_78bff89b"<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -100,201 +100,66 @@ body {
 .result-item:hover {
     background: #eee;
 }
-</style>
 
-	<style>
-.highlight-search {
-    background-color: yellow;
+/* &#127775; DEFAULT HIGHLIGHT COLOR */
+mark {
+    background-color: #ffeb3b;
     color: black;
-    padding: 2px;
 }
 </style>
 </head>
 
 <body>
 
-<!&#8212; SEARCH &#8212;>
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search site&#8230;" onkeyup="searchSite()">
+<input type="text" id="searchInput" placeholder="Search site..." onkeyup="searchSite()">
 <div id="results"></div>
 </div>
 
 <script>
-function searchSite() {
+// Helper function to remove previous highlights without modifying structural HTML tags
+function clearHighlights(container) {
+    const marks = container.querySelectorAll("mark");
+    marks.forEach(mark => {
+        const textNode = document.createTextNode(mark.textContent);
+        mark.replaceWith(textNode);
+    });
+    // Normalize to stitch split text nodes back together
+    container.normalize();
+}
 
+function searchSite() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let resultsBox = document.getElementById("results");
+    
+    // Target the body element to look for words to highlight
+    let contentBody = document.body;
 
     resultsBox.innerHTML = "";
+    
+    // Clear any previous highlights first
+    clearHighlights(contentBody);
 
-    if (input.length === 0) return;
+    if (input.trim().length === 0) return;
 
-    // &#128293; COMBINED DATA: pages + genres
+    // &#128293; COMBINED DATA: pages + genres (All pages restored)
     let data = [
-
         // &#127760; SITE PAGES
         {
             name: "Home Page",
             keywords: ["home", "main", "start", "welcome", "index"],
             link: "index.html"
         },
-		<script>
-window.addEventListener("load", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const keyword = params.get("highlight");
-
-    if (!keyword) return;
-
-    function highlightText(node) {
-
-        if (node.nodeType === 3) { // text node
-
-            const text = node.nodeValue;
-            const regex = new RegExp("(" + keyword + ")", "gi");
-
-            if (regex.test(text)) {
-
-                const span = document.createElement("span");
-
-                span.innerHTML = text.replace(
-                    regex,
-                    '<span class="highlight-search">$1</span>'
-                );
-
-                node.parentNode.replaceChild(span, node);
-            }
-
-        } else if (
-            node.nodeType === 1 &&
-            node.tagName !== "SCRIPT" &&
-            node.tagName !== "STYLE"
-        ) {
-
-            [...node.childNodes].forEach(highlightText);
-        }
-    }
-
-    highlightText(document.body);
-
-    const firstHighlight = document.querySelector(".highlight-search");
-
-    if (firstHighlight) {
-        firstHighlight.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-});
-</script>
         {
             name: "Contact Page",
             keywords: ["contact", "email", "phone", "help", "support"],
             link: "contact_us.html"
         },
-	<script>
-window.addEventListener("load", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const keyword = params.get("highlight");
-
-    if (!keyword) return;
-
-    function highlightText(node) {
-
-        if (node.nodeType === 3) { // text node
-
-            const text = node.nodeValue;
-            const regex = new RegExp("(" + keyword + ")", "gi");
-
-            if (regex.test(text)) {
-
-                const span = document.createElement("span");
-
-                span.innerHTML = text.replace(
-                    regex,
-                    '<span class="highlight-search">$1</span>'
-                );
-
-                node.parentNode.replaceChild(span, node);
-            }
-
-        } else if (
-            node.nodeType === 1 &&
-            node.tagName !== "SCRIPT" &&
-            node.tagName !== "STYLE"
-        ) {
-
-            [...node.childNodes].forEach(highlightText);
-        }
-    }
-
-    highlightText(document.body);
-
-    const firstHighlight = document.querySelector(".highlight-search");
-
-    if (firstHighlight) {
-        firstHighlight.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-});
-</script>
         {
             name: "Genre Page",
             keywords: ["music", "info", "disco", "era", "retro"],
             link: "genre.html"
         },
-	<script>
-window.addEventListener("load", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const keyword = params.get("highlight");
-
-    if (!keyword) return;
-
-    function highlightText(node) {
-
-        if (node.nodeType === 3) { // text node
-
-            const text = node.nodeValue;
-            const regex = new RegExp("(" + keyword + ")", "gi");
-
-            if (regex.test(text)) {
-
-                const span = document.createElement("span");
-
-                span.innerHTML = text.replace(
-                    regex,
-                    '<span class="highlight-search">$1</span>'
-                );
-
-                node.parentNode.replaceChild(span, node);
-            }
-
-        } else if (
-            node.nodeType === 1 &&
-            node.tagName !== "SCRIPT" &&
-            node.tagName !== "STYLE"
-        ) {
-
-            [...node.childNodes].forEach(highlightText);
-        }
-    }
-
-    highlightText(document.body);
-
-    const firstHighlight = document.querySelector(".highlight-search");
-
-    if (firstHighlight) {
-        firstHighlight.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-});
-</script>
 
         // &#127925; MUSIC GENRES
         { 
@@ -305,55 +170,6 @@ window.addEventListener("load", function () {
             ], 
             link: "genre.html#disco" 
         },
-	<script>
-window.addEventListener("load", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const keyword = params.get("highlight");
-
-    if (!keyword) return;
-
-    function highlightText(node) {
-
-        if (node.nodeType === 3) { // text node
-
-            const text = node.nodeValue;
-            const regex = new RegExp("(" + keyword + ")", "gi");
-
-            if (regex.test(text)) {
-
-                const span = document.createElement("span");
-
-                span.innerHTML = text.replace(
-                    regex,
-                    '<span class="highlight-search">$1</span>'
-                );
-
-                node.parentNode.replaceChild(span, node);
-            }
-
-        } else if (
-            node.nodeType === 1 &&
-            node.tagName !== "SCRIPT" &&
-            node.tagName !== "STYLE"
-        ) {
-
-            [...node.childNodes].forEach(highlightText);
-        }
-    }
-
-    highlightText(document.body);
-
-    const firstHighlight = document.querySelector(".highlight-search");
-
-    if (firstHighlight) {
-        firstHighlight.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-});
-</script>
         { 
             name: "Hip Hop", 
             keywords: [
@@ -362,55 +178,6 @@ window.addEventListener("load", function () {
             ], 
             link: "genre.html#hiphop" 
         },
-	<script>
-window.addEventListener("load", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const keyword = params.get("highlight");
-
-    if (!keyword) return;
-
-    function highlightText(node) {
-
-        if (node.nodeType === 3) { // text node
-
-            const text = node.nodeValue;
-            const regex = new RegExp("(" + keyword + ")", "gi");
-
-            if (regex.test(text)) {
-
-                const span = document.createElement("span");
-
-                span.innerHTML = text.replace(
-                    regex,
-                    '<span class="highlight-search">$1</span>'
-                );
-
-                node.parentNode.replaceChild(span, node);
-            }
-
-        } else if (
-            node.nodeType === 1 &&
-            node.tagName !== "SCRIPT" &&
-            node.tagName !== "STYLE"
-        ) {
-
-            [...node.childNodes].forEach(highlightText);
-        }
-    }
-
-    highlightText(document.body);
-
-    const firstHighlight = document.querySelector(".highlight-search");
-
-    if (firstHighlight) {
-        firstHighlight.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-    }
-});
-</script>
         { 
             name: "Alternative Rock", 
             keywords: [
@@ -421,11 +188,10 @@ window.addEventListener("load", function () {
         }
     ];
 
-    let words = input.split(" ");
+    let words = input.split(" ").filter(w => w.trim() !== "");
 
     data.forEach(item => {
         let fullText = item.name.toLowerCase() + " " + item.keywords.join(" ").toLowerCase();
-
         let match = words.every(word => fullText.includes(word));
 
         if (match) {
@@ -433,14 +199,9 @@ window.addEventListener("load", function () {
             div.className = "result-item";
             div.textContent = item.name;
 
-            ddiv.onclick = function() {
-    window.location.href =
-        item.link +
-        (item.link.includes("?") ? "&" : "?") +
-        "highlight=" +
-        encodeURIComponent(words[0]);
-};
-};
+            div.onclick = function() {
+                window.location.href = item.link;
+            };
 
             resultsBox.appendChild(div);
         }
@@ -449,11 +210,44 @@ window.addEventListener("load", function () {
     if (resultsBox.innerHTML === "") {
         resultsBox.innerHTML = "<div class='result-item'>No results found</div>";
     }
+
+    // &#127775; HIGHLIGHT TEXT MATCHES ON THE PAGE
+    words.forEach(word => {
+        let safeWord = word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        let regex = new RegExp(`(${safeWord})`, "gi");
+
+        const walkTextNodes = (node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (regex.test(node.nodeValue)) {
+                    const originalText = node.nodeValue;
+                    const tempSpan = document.createElement("span");
+                    tempSpan.innerHTML = originalText.replace(regex, "<mark>$1</mark>");
+                    
+                    // Replace text node with elements cleanly
+                    while (tempSpan.firstChild) {
+                        node.parentNode.insertBefore(tempSpan.firstChild, node);
+                    }
+                    node.parentNode.removeChild(node);
+                }
+            } else if (
+                node.nodeType === Node.ELEMENT_NODE && 
+                node.tagName !== "SCRIPT" && 
+                node.tagName !== "STYLE" && 
+                node.tagName !== "INPUT" && 
+                node.id !== "results"
+            ) {
+                // Safely crawl child elements recursively without redefining layout blocks
+                Array.from(node.childNodes).forEach(walkTextNodes);
+            }
+        };
+
+        Array.from(contentBody.childNodes).forEach(walkTextNodes);
+    });
 }
 </script>
 
 </body>
-</html>><div id="container_33dab022_padding" ></div></div></div>
+</html>><div id="container_78bff89b_padding" ></div></div></div>
 <div style="clear:both"></div></div></div></div>
 <div style="clear:both"></div></div></div><div id="container_26f900e2"><div id="container_26f900e2_padding" ><div class="textstyle1">  <span class="textstyle7">Retro music, &quot;or the oldies,&quot; had a huge influence on future of music. It even created newer genres, allowing people to experience different aspects of music and become more creative or experimental with their tastes. This has resulted in the mass popularisation of many artists and their music.&#8203;<br/><br/>Nowadays, teens and young adults often find themselves listening to more oldies or retro-style music from modern artists, due to the nostalgic and comforting vibes, that older music give off.&#8203;<br/><br/>Join us as we get to know more about these retro tunes.</span>
 </div>

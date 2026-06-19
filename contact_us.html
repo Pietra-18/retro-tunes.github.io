@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Sekuya&display=swap" rel="stylesheet"> 	<title></title>
-	<link rel="stylesheet" type="text/css" href="contact_us_html.css?h=dafece85">
+	<link rel="stylesheet" type="text/css" href="contact_us_html.css?h=373979ba">
 </head>
 <body>
 <div class="textstyle1">
@@ -56,7 +56,7 @@
 </div></div><div id="container_23baf3ea"><div id="container_23baf3ea_padding" ><div class="textstyle1"><div id="container_70e60e76"><div id="container_70e60e76_padding" ><div class="textstyle1"><div id="container_18bafa13"><div id="container_18bafa13_padding" ><div class="textstyle5">  <span class="textstyle6">Retro Tunes</span>
 </div>
 </div></div></div>
-<div class="textstyle5"><div id="container_6532fa0e"<!DOCTYPE html>
+<div class="textstyle5"><div id="container_3c70b732"<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -100,30 +100,50 @@ body {
 .result-item:hover {
     background: #eee;
 }
+
+/* &#127775; DEFAULT HIGHLIGHT COLOR */
+mark {
+    background-color: #ffeb3b;
+    color: black;
+}
 </style>
 </head>
 
 <body>
 
-<!&#8212; SEARCH &#8212;>
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search site&#8230;" onkeyup="searchSite()">
+<input type="text" id="searchInput" placeholder="Search site..." onkeyup="searchSite()">
 <div id="results"></div>
 </div>
 
 <script>
-function searchSite() {
+// Helper function to remove previous highlights without modifying structural HTML tags
+function clearHighlights(container) {
+    const marks = container.querySelectorAll("mark");
+    marks.forEach(mark => {
+        const textNode = document.createTextNode(mark.textContent);
+        mark.replaceWith(textNode);
+    });
+    // Normalize to stitch split text nodes back together
+    container.normalize();
+}
 
+function searchSite() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let resultsBox = document.getElementById("results");
+    
+    // Target the body element to look for words to highlight
+    let contentBody = document.body;
 
     resultsBox.innerHTML = "";
+    
+    // Clear any previous highlights first
+    clearHighlights(contentBody);
 
-    if (input.length === 0) return;
+    if (input.trim().length === 0) return;
 
-    // &#128293; COMBINED DATA: pages + genres
+    // &#128293; COMBINED DATA: pages + genres (All pages restored)
     let data = [
-
         // &#127760; SITE PAGES
         {
             name: "Home Page",
@@ -168,11 +188,10 @@ function searchSite() {
         }
     ];
 
-    let words = input.split(" ");
+    let words = input.split(" ").filter(w => w.trim() !== "");
 
     data.forEach(item => {
         let fullText = item.name.toLowerCase() + " " + item.keywords.join(" ").toLowerCase();
-
         let match = words.every(word => fullText.includes(word));
 
         if (match) {
@@ -191,16 +210,50 @@ function searchSite() {
     if (resultsBox.innerHTML === "") {
         resultsBox.innerHTML = "<div class='result-item'>No results found</div>";
     }
+
+    // &#127775; HIGHLIGHT TEXT MATCHES ON THE PAGE
+    words.forEach(word => {
+        let safeWord = word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        let regex = new RegExp(`(${safeWord})`, "gi");
+
+        const walkTextNodes = (node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (regex.test(node.nodeValue)) {
+                    const originalText = node.nodeValue;
+                    const tempSpan = document.createElement("span");
+                    tempSpan.innerHTML = originalText.replace(regex, "<mark>$1</mark>");
+                    
+                    // Replace text node with elements cleanly
+                    while (tempSpan.firstChild) {
+                        node.parentNode.insertBefore(tempSpan.firstChild, node);
+                    }
+                    node.parentNode.removeChild(node);
+                }
+            } else if (
+                node.nodeType === Node.ELEMENT_NODE && 
+                node.tagName !== "SCRIPT" && 
+                node.tagName !== "STYLE" && 
+                node.tagName !== "INPUT" && 
+                node.id !== "results"
+            ) {
+                // Safely crawl child elements recursively without redefining layout blocks
+                Array.from(node.childNodes).forEach(walkTextNodes);
+            }
+        };
+
+        Array.from(contentBody.childNodes).forEach(walkTextNodes);
+    });
 }
 </script>
 
 </body>
-</html>><div id="container_6532fa0e_padding" ></div></div></div>
+</html>><div id="container_3c70b732_padding" ></div></div></div>
 <div style="clear:both"></div></div></div></div>
 <div style="clear:both"></div></div></div><div id="container_3ac38fd0"><div id="container_3ac38fd0_padding" ><div class="textstyle1"><span class="textstyle7">REQUEST FORM</span><span class="textstyle8"><br/><br/>There are many genres and songs that remain undiscovered, even by us. Help us expand our collection by requesting a genre, song, artist not yet mentioned.<br/><br/>Your requests help us share the stories of those who contributed to music history, ensuring their voices are heard both past and present. Through these genres, their legacy continues to exist.<br/><br/>Please include this information in your email message below.</span></div>
 </div></div>  </div>
 <div class="textstyle5">
 <div id="container_4beb9065"><div id="container_4beb9065_padding" ><div class="textstyle1"><form  action="https://formspree.io/f/xdaverng"
+enctype="text/plain"
 method="POST" id="form_232424b1"><div id="form_232424b1_padding" ><div class="textstyle1">  <span class="textstyle9">Name:</span>
   <span class="textstyle8"> </span>
 <input type="text" value="" title="" name="Name"  id="edit_409996f1" >
